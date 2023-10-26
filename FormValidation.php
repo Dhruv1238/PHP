@@ -6,15 +6,15 @@
         .error {
             color: #FF0000;
         }
-
     </style>
 </head>
 
 <body>
-
+    <?php
+    ?>
     <?php
     $nameErr = $emailErr = $genderErr = $websiteErr = "*";
-    $name  = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING);
+    $name  = filter_input(INPUT_POST, 'name', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     $email = filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
     $gender = $comment = $website = "";
 
@@ -76,17 +76,25 @@
     </form>
 
     <?php
+    // header("Location: /PHP/exp2.php");
+    // header("Location: /PHP/exp2.php?name=" . urlencode($_POST['name']));
+    ?>
 
-    echo "<h2>Your Input:</h2>";
-    echo $_POST['name'];
-    echo "<br>";
-    echo $_POST['email'];
-    echo "<br>";
-    echo $_POST['website'];
-    echo "<br>";
-    echo $_POST['comment'];
-    echo "<br>";
-    echo $_POST["gender"];;
+    <?php
+    if ($nameErr == "*" && $emailErr == "*" && $websiteErr == "*" && $genderErr == "*") {
+        echo "<h2>Your Input:</h2>";
+        echo $_POST['name'];
+        echo "<br>";
+        echo $_POST['email'];
+        echo "<br>";
+        echo $_POST['website'];
+        echo "<br>";
+        echo $_POST['comment'];
+        echo "<br>";
+        echo $_POST["gender"];;
+    } else {
+        echo "<h2>Invalid Input</h2>";
+    }
     ?>
 
 </body>

@@ -26,6 +26,20 @@
 
     <h1>My first PHP page</h1>
 
+    <?php
+    if (isset($_COOKIE["username"])) {
+        echo "Username: " . $_COOKIE["username"];
+        echo"<br>";
+        echo "Password: " . $_COOKIE["password"];
+        echo "<br>";
+        echo "Date: " . $_COOKIE["cookie3"];
+    } else {
+        echo "No username stored in cookie.";
+    }
+    ?>
+    <p><a href="CookDhariya.php">GoBack</a></p>
+    <p><a href="destroy.php">Logout</a></p>
+
     Welcome <?php echo $_POST["name"]; ?> |
    Your email address is <?php echo $_POST["email"]; ?> <br>
    Your Data Is Here
